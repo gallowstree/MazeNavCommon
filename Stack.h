@@ -45,7 +45,7 @@ class Stack
 
         T pop()
         {
-            T data;
+            T data = NULL;
             if (!this->isEmpty())
             {
                 Node *currentTail = nullptr;
