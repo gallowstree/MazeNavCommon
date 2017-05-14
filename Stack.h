@@ -18,15 +18,6 @@ class Stack
             this->tail = nullptr;
         }
 
-        ~Stack()
-        {
-            if(this->head != nullptr)
-                delete this->head;
-            if(this->tail != nullptr)
-                delete this->tail;
-
-        }
-
         void push(T data)
         {
             Node * node = new Node;
@@ -83,6 +74,19 @@ class Stack
                 node = node->next;
             }
             printf("\n");
+        }
+
+        ~Stack()
+        {
+            while(!this->isEmpty())
+            {
+                this->pop();
+            }
+
+            if(this->head != nullptr)
+                delete this->head;
+            if(this->tail != nullptr)
+                delete this->tail;
         }
 
     private:

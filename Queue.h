@@ -13,11 +13,6 @@ class Queue {
             this->tail = nullptr;
         }
 
-        ~Queue()
-        {
-            //falta implementar XD
-        }
-
         void enqueue(T data)
         {
             Node * node = new Node;
@@ -25,7 +20,6 @@ class Queue {
             node-> next = nullptr;
             if(this->isEmpty())
             {
-                printf ("this shit is empty\n");
                 this->head = this->tail = node;
             }
             else
@@ -40,7 +34,7 @@ class Queue {
             if (!this->isEmpty())
             {
                 Node *currentTail = nullptr;
-                int data = NULL;
+                T data = NULL;
                 if (this->head == this->tail) {
                     currentTail = this->tail;
                     this->head = this->tail = nullptr;
@@ -72,10 +66,23 @@ class Queue {
             Node * node = this->head;
             while(node != nullptr)
             {
-                printf("%c,", node->data);
+                printf("%i,", node->data);
                 node = node->next;
             }
             printf("\n");
+        }
+
+        ~Queue()
+        {
+            while(!this->isEmpty())
+            {
+                this->dequeue();
+            }
+
+            if(this->head != nullptr)
+                delete this->head;
+            if(this->tail != nullptr)
+                delete this->tail;
         }
 
     private:
