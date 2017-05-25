@@ -27,9 +27,9 @@ public:
 
 
     //The third parameter expects a reference to an array of Tile pointers, which will be populated
-    //with the sucessors of the tile at row, col. This array should be of size 4, as this is the max
-    //number of succesors without diagonal movement. Returns the number of succesors or -1 if invalid params.
-    int getSucessors(int row, int col, Tile* &result[]) const;
+    //with the successors of the tile at row, col. This array should be of size 4, as this is the max
+    //number of successors without diagonal movement. Returns the number of successors or -1 if invalid params.
+    int getSuccessors(int row, int col, Tile* &result[]) const;
 
     size_t getRows() const;
     size_t getCols() const;
