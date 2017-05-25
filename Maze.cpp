@@ -38,7 +38,7 @@ size_t Maze::getCols()const {
     return this->cols;
 }
 
-int Maze::getSuccessors(int row, int col, Tile *&result[]) const {
+int Maze::getSuccessors(int row, int col, Tile* (&result)[]) const {
 
     if ( row < 0 || col < 0 || row >= rows || col >= cols )
         return -1;
