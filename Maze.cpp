@@ -64,7 +64,7 @@ int Maze::getSucessors(int row, int col, Tile *&result[]) const {
 
 
     if (!t.hasWallAt[DIRECTION_DOWN] && row < rows - 1) {
-        result[DIRECTION_LEFT] = &getTileAt(row + 1, col);
+        result[DIRECTION_DOWN] = &getTileAt(row + 1, col);
         sucessorCount++;
     }
 
