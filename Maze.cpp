@@ -3,8 +3,8 @@
 #include <cstdlib>
 #include "Maze.h"
 
-Tile& Maze::getTileAt(int row, int col)const {
-    return this->tiles[row][col];
+Tile* Maze::getTileAt(int row, int col)const {
+    return &this->tiles[row][col];
 }
 
 Maze::Maze(size_t rows, size_t cols) : cols(cols),
@@ -55,25 +55,25 @@ int Maze::getSuccessors(int row, int col, Tile* (&result)[]) const {
 
     int successorCount = 0;
 
-    Tile t = getTileAt(row, col);
+    Tile* t = getTileAt(row, col);
 
-    if (!t.hasWallAt[DIRECTION_LEFT] && col > 0) {
-        result[DIRECTION_LEFT] = &getTileAt(row, col - 1);
+    if (!t->hasWallAt[DIRECTION_LEFT] && col > 0) {
+        result[DIRECTION_LEFT] = getTileAt(row, col - 1);
         successorCount++;
     }
 
-    if (!t.hasWallAt[DIRECTION_UP] && row > 0) {
-        result[DIRECTION_UP] = &getTileAt(row - 1, col);
+    if (!t->hasWallAt[DIRECTION_UP] && row > 0) {
+        result[DIRECTION_UP] = getTileAt(row - 1, col);
         successorCount++;
     }
 
-    if (!t.hasWallAt[DIRECTION_RIGHT] && col < cols - 1) {
-        result[DIRECTION_RIGHT] = &getTileAt(row, col + 1);
+    if (!t->hasWallAt[DIRECTION_RIGHT] && col < cols - 1) {
+        result[DIRECTION_RIGHT] = getTileAt(row, col + 1);
         successorCount++;
     }
 
-    if (!t.hasWallAt[DIRECTION_DOWN] && row < rows - 1) {
-        result[DIRECTION_DOWN] = &getTileAt(row + 1, col);
+    if (!t->hasWallAt[DIRECTION_DOWN] && row < rows - 1) {
+        result[DIRECTION_DOWN] = getTileAt(row + 1, col);
         successorCount++;
     }
 

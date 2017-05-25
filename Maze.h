@@ -7,7 +7,7 @@
 
 
 #include "Tile.h"
-
+#include <stddef.h>
 #define DIRECTION_LEFT 0
 #define DIRECTION_UP 1
 #define DIRECTION_RIGHT 2
@@ -23,7 +23,7 @@ private:
 
 public:
     Maze(size_t rows, size_t cols);
-    Tile& getTileAt(int row, int col) const;
+    Tile*  getTileAt(int row, int col) const;
 
 
     //The third parameter expects a reference to an array of Tile pointers, which will be populated
