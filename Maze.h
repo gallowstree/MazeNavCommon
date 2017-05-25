@@ -8,6 +8,11 @@
 
 #include "Tile.h"
 
+#define DIRECTION_LEFT 0
+#define DIRECTION_UP 1
+#define DIRECTION_RIGHT 2
+#define DIRECTION_DOWN 3
+
 class Maze {
 
 private:
@@ -19,6 +24,12 @@ private:
 public:
     Maze(size_t rows, size_t cols);
     Tile& getTileAt(int row, int col) const;
+
+
+    //The third parameter expects a reference to an array of Tile pointers, which will be populated
+    //with the sucessors of the tile at row, col. This array should be of size 4, as this is the max
+    //number of succesors without diagonal movement. Returns the number of succesors or -1 if invalid params.
+    int getSucessors(int row, int col, Tile* &result[]) const;
 
     size_t getRows() const;
     size_t getCols() const;

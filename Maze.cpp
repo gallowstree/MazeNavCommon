@@ -38,3 +38,36 @@ size_t Maze::getCols()const {
     return this->cols;
 }
 
+int Maze::getSucessors(int row, int col, Tile *&result[]) const {
+
+    if ( row < 0 || col < 0 || row >= rows || col >= cols )
+        return -1;
+
+    int sucessorCount = 0;
+
+    Tile t = getTileAt(row, col);
+
+    if (!t.hasWallAt[DIRECTION_LEFT] && col > 0) {
+        result[DIRECTION_LEFT] = &getTileAt(row, col - 1);
+        sucessorCount++;
+    }
+
+    if (!t.hasWallAt[DIRECTION_UP] && row > 0) {
+        result[DIRECTION_UP] = &getTileAt(row - 1, col);
+        sucessorCount++;
+    }
+
+    if (!t.hasWallAt[DIRECTION_RIGHT] && col < cols - 1) {
+        result[DIRECTION_RIGHT] = &getTileAt(row, col + 1);
+        sucessorCount++;
+    }
+
+
+    if (!t.hasWallAt[DIRECTION_DOWN] && row < rows - 1) {
+        result[DIRECTION_LEFT] = &getTileAt(row + 1, col);
+        sucessorCount++;
+    }
+
+    return sucessorCount;
+}
+
