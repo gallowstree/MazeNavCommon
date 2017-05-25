@@ -22,8 +22,18 @@ Maze::Maze(size_t rows, size_t cols) : cols(cols),
             t->row = r;
             t->col = c;
 
-            for (int w = 0; w < 4; w++)
-                t->hasWallAt[w] = (bool) (rand() % 2);
+            t->hasWallAt[DIRECTION_UP] = r == 0;
+            t->hasWallAt[DIRECTION_DOWN] = r == rows - 1;
+            t->hasWallAt[DIRECTION_LEFT] = c == 0;
+            t->hasWallAt[DIRECTION_RIGHT] = c == cols - 1;
+
+//            bool hasWall = r == rows - 1 && c == 0;
+//            t->hasWallAt[DIRECTION_UP] = hasWall;
+//            t->hasWallAt[DIRECTION_DOWN] = hasWall;
+//            t->hasWallAt[DIRECTION_LEFT] = hasWall;
+//            t->hasWallAt[DIRECTION_RIGHT] = hasWall;
+
+
             tiles[r][c] = *t;
         }
     }
