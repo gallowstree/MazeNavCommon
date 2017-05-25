@@ -5,6 +5,9 @@
 #ifndef STRUCTURES_QUEUE_H
 #define STRUCTURES_QUEUE_H
 
+#include <cstdlib>
+#include <cstdio>
+
 template <class T>
 class Queue {
     public:
