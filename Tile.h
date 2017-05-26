@@ -13,6 +13,8 @@ public:
     int col;
 
     Tile();
+
+    virtual ~Tile();
 };
 
 

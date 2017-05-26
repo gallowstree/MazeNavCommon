@@ -8,3 +8,7 @@ Tile::Tile()
 {
 
 }
+
+Tile::~Tile() {
+    //delete [] hasWallAt;
+}

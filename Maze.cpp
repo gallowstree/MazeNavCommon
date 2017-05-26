@@ -10,12 +10,11 @@ Tile* Maze::getTileAt(int row, int col)const {
 Maze::Maze(size_t rows, size_t cols) : cols(cols),
                                        rows(rows)
 {
-    this->tiles = new Tile*[rows];
-    srand(time(0));
+    this->tiles = new Tile*[rows]();
 
     for (int r = 0; r < rows; r++)
     {
-        this->tiles[r] = new Tile[cols];
+        this->tiles[r] = new Tile[cols]();
         for (int c = 0; c < cols; c++)
         {
             Tile* t = new Tile();
@@ -39,6 +38,19 @@ Maze::Maze(size_t rows, size_t cols) : cols(cols),
     }
 }
 
+Maze::~Maze() {
+    for (int r = 0; r < rows; r++)
+    {
+        for (int c = 0; c < cols; c++)
+        {
+            //delete getTileAt(r, c);
+        }
+        delete[] tiles[r];
+    }
+    delete[] tiles;
+
+}
+
 size_t Maze::getRows()const {
     return this->rows;
 }
@@ -48,7 +60,7 @@ size_t Maze::getCols()const {
     return this->cols;
 }
 
-int Maze::getSuccessors(int row, int col, Tile* (&result)[]) const {
+int Maze::getSuccessors(int row, int col, Tile* result[]) const {
 
     if ( row < 0 || col < 0 || row >= rows || col >= cols )
         return -1;

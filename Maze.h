@@ -19,7 +19,6 @@ private:
     Tile **tiles;
     size_t rows = 10;
     size_t cols = 10;
-    int tileSize = 20;
 
 public:
     Maze(size_t rows, size_t cols);
@@ -29,10 +28,14 @@ public:
     //The third parameter expects a reference to an array of Tile pointers, which will be populated
     //with the successors of the tile at row, col. This array should be of size 4, as this is the max
     //number of successors without diagonal movement. Returns the number of successors or -1 if invalid params.
-    int getSuccessors(int row, int col, Tile* (&result)[]) const;
+    int getSuccessors(int row, int col, Tile **result) const;
 
     size_t getRows() const;
     size_t getCols() const;
+
+    virtual ~Maze();
+
+
 };
 
 
