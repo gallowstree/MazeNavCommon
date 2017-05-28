@@ -23,6 +23,11 @@ class PriorityQueue {
             newNode-> next = nullptr;
             newNode-> previous = nullptr;
             newNode->priority = priority;
+
+            int itemPosition = this->searchItem(newNode->data);
+            if(itemPosition != -1)
+                deleteItem(itemPosition);
+
             if(this->isEmpty())
             {
                 this->head = newNode;
@@ -34,7 +39,7 @@ class PriorityQueue {
                 bool lowPriorityFound = false;
                 while((node != nullptr) && !lowPriorityFound)
                 {
-                    if(node->priority < newNode->priority)
+                    if(node->priority > newNode->priority)
                     {
                         lowPriorityFound = true;
                     }
@@ -82,6 +87,39 @@ class PriorityQueue {
             return NULL;
         }
 
+        void deleteItem(int position)
+        {
+            Node * node = this->head;
+            int pos = 0;
+            while(pos != position) {
+                node=node->next;
+                pos++;
+            }
+
+            if(node->previous != nullptr)
+                node->previous->next = node->next;
+            if(node->next != nullptr)
+                node->next->previous = node->previous;
+
+            if(node == this->head)
+                this->head = node->next;
+
+            delete node;
+        }
+
+        int searchItem(T data)
+        {
+            Node * node = this->head;
+            int position = 0;
+            while(node != nullptr) {
+                if(node->data == data)
+                    return position;
+                position++;
+                node = node->next;
+            }
+            return -1;
+        }
+
         bool isEmpty()
         {
             return this->head == nullptr;
@@ -92,7 +130,7 @@ class PriorityQueue {
             Node * node = this->head;
             while(node != nullptr)
             {
-                printf("priority: %i, ",node->priority);
+                printf("%d data, priority: %i, ",node->data,node->priority);
                 node = node->next;
             }
             printf("\n");

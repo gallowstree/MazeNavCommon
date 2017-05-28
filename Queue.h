@@ -88,6 +88,18 @@ class Queue {
             printf("\n");
         }
 
+        int size()
+        {
+            int size = 0;
+            Node * node = this->head;
+            while(node != nullptr)
+            {
+                size++;
+                node = node->next;
+            }
+            return size;
+        }
+
         ~Queue()
         {
             while(!this->isEmpty())

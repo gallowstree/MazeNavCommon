@@ -13,6 +13,9 @@ class Search {
     public:
     static void dfs(Maze * maze, Queue<int> * route);
     static void bfs(Maze * maze, Queue<int> * route);
+    static void astar(Maze * maze, Queue<int> * route);
+    private:
+    static int euclidean_distance(Tile * a, Tile * b);
 };
 
 

@@ -5,6 +5,7 @@
 #ifndef TEST_CLIENT_MAZESERIALIZER_H
 #define TEST_CLIENT_MAZESERIALIZER_H
 
+#include <cstring>
 #include "Maze.h"
 
 #define MARKER_BEGIN_MAZE "3.14"
