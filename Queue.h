@@ -7,6 +7,7 @@
 
 #include <cstdlib>
 #include <cstdio>
+#include "Stack.h"
 
 template <class T>
 class Queue {
@@ -21,12 +22,14 @@ class Queue {
             Node * node = new Node;
             node->data = data;
             node-> next = nullptr;
+            node->prev = nullptr;
             if(this->isEmpty())
             {
                 this->head = this->tail = node;
             }
             else
             {
+                this->head->prev = node;
                 node->next = this->head;
                 this->head = node;
             }
@@ -57,6 +60,16 @@ class Queue {
                 return data;
             }
             return NULL;
+        }
+
+        void copyQueue(Queue * dstQueue)
+        {
+            Node * node = this->tail;
+            while(node != nullptr)
+            {
+                dstQueue->enqueue(node->data);
+                node = node->prev;
+            }
         }
 
         bool isEmpty()
@@ -90,6 +103,7 @@ class Queue {
 
     private:
         struct Node{
+            Node * prev;
             Node * next;
             T data;
         };

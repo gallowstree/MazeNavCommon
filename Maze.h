@@ -23,7 +23,8 @@ private:
 public:
     Maze(size_t rows, size_t cols);
     Tile*  getTileAt(int row, int col) const;
-
+    Tile* startTile = nullptr;
+    Tile* goalTile = nullptr;
 
     //The third parameter expects a reference to an array of Tile pointers, which will be populated
     //with the successors of the tile at row, col. This array should be of size 4, as this is the max

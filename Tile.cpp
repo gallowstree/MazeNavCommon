@@ -6,9 +6,9 @@
 
 Tile::Tile()
 {
-
+    route = new Queue<int>();
 }
 
 Tile::~Tile() {
-    //delete [] hasWallAt;
+    delete route;
 }
