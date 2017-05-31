@@ -92,3 +92,17 @@ int Maze::getSuccessors(int row, int col, Tile* result[]) const {
     return successorCount;
 }
 
+void Maze::resetVisitedTiles()
+{
+    for(int row = 0; row < this->rows; row++)
+    {
+        for(int col = 0; col < this->cols; col++)
+        {
+            Tile * tile = this->getTileAt(row,col);
+            tile->visited = false;
+            delete tile->route;
+            tile->route = new Queue<int>;
+        }
+    }
+}
+

@@ -40,6 +40,7 @@ void Search::dfs(Maze * maze, Queue<int> * route)
             delete[] successors;
         }
     }
+    maze->resetVisitedTiles();
 }
 
 void Search::bfs(Maze * maze, Queue<int> * route)
@@ -75,6 +76,7 @@ void Search::bfs(Maze * maze, Queue<int> * route)
             delete[] successors;
         }
     }
+    maze->resetVisitedTiles();
 }
 
 void Search::astar(Maze *maze, Queue<int> *route) {
@@ -111,6 +113,7 @@ void Search::astar(Maze *maze, Queue<int> *route) {
             delete[] successors;
         }
     }
+    maze->resetVisitedTiles();
 }
 
 int Search::euclidean_distance(Tile *a, Tile *b) {
